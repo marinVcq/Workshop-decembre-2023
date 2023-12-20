@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Your Site{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'dys_app/styles.css' %}">
+        <script src="{% static 'dys_app/script.js' %}" defer></script>
+
+        <script>
+            function toggleMobileNav() {
+                var linksContainer = document.getElementById("mobile-links-container");
+                var bgLayer = document.getElementById("bg-layer");
+
+                bgLayer.style.height = ( bgLayer.style.height === "100%" ? bgLayer.style.height = "0" :  bgLayer.style.height = "100%" );
+                linksContainer.style.top = (linksContainer.style.top === "7rem" ? linksContainer.style.top = "-23rem" : linksContainer.style.top = "7rem");
+            }
+        </script>
+    </head>
+    <body>
+
+        <nav class="navbar-container mobile-navbar">
+
+            <div class="bg-layer" id="bg-layer"></div>
+
+            <div class="links-container" id="mobile-links-container">
+                <a class="nav-link" href="{% url 'home' %}">Accueil</a>
+                <a class="nav-link" href="#">Exercices</a>
+                <a class="nav-link" href="{% url 'lessons' %}">Leçons</a>
+                <a class="nav-link" href="#">Contact</a>
+                {% if user.is_authenticated %}
+                    <a class="nav-link" href="#">Dashboard</a>
+                    <a class="nav-link log-btn" href="{% url 'logout' %}">Déconnexion</a></li>
+                {% else %}
+                    <a class="nav-link log-btn" href="{% url 'login' %}">Connexion</a>
+                {% endif %}
+            </div>
+
+            <div class="navbar-header">
+                <p class="navbar-title">Dys Application</p>
+                <div class="menu-btn" onclick="toggleMobileNav()">
+                    <img id="menu-icon" src="{% static 'dys_app/images/menu-open.png' %}" alt="Menu Icon">
+                </div>
+            </div>
+
+        </nav>
+
+        <div class="page-container">
+            {% block content %}{% endblock %}
+        </div>
+
+        <footer>
+            <p>&copy; 2023 Powered by Django with love. All rights not reserved.</p>
+        </footer>
+    </body>
+
+</html>

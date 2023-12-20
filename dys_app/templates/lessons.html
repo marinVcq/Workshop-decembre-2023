@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Lessons</h2>
+
+    {% if user.is_authenticated %}
+        {% for lesson in lessons %}
+            <div>
+                <h3>{{ lesson.title }}</h3>
+                <p>{{ lesson.description }}</p>
+                <p>Date: {{ lesson.date }}</p>
+                <p>Publisher: {{ lesson.publisher }}</p>
+                <p>YouTube Link: <a href="{{ lesson.youtube_link }}" target="_blank">{{ lesson.youtube_link }}</a></p>
+                <p>School Level: {{ lesson.school_level }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>You have to be logged in to view lessons. <a href="{% url 'login' %}">Login</a></p>
+    {% endif %}
+{% endblock %}

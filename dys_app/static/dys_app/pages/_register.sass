@@ -1,0 +1,69 @@
+.form-page-container
+    background-color: white
+    width: 100%
+    height: 100vh
+    display: flex
+    justify-content: center
+    align-items: center
+    // background-color: white
+    background-image: url("./images/tech.jpg")
+    background-size: cover
+    background-position: fixed
+    padding: 2rem
+
+    .form-container
+        box-shadow: 3px 11px 19px 0px rgba(0,0,0,0.69)
+        background-color: white
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        align-items: center 
+        gap: 20px
+        border-radius: 6px
+        padding: 2rem
+        max-width: 375px
+
+
+        form
+            width: 100% 
+            display: flex
+            flex-direction: column
+            gap: 20px
+
+            .input-container
+                display: flex
+                flex-direction: column
+                justify-content: flex-start
+                align-items: flex-start
+                gap: 10px
+                width: 100%
+
+                label
+                    font-size: 1.6rem
+                input
+                    width: 100%
+                    min-width: 325px
+                    padding: 10px
+                    caret-color: #333
+
+                textarea
+                    width: 70%
+                    height: 100px
+                    padding: 10px
+
+            .btn 
+                background-color: #FF2511
+                border: none
+                width: auto
+                align-self: flex-end
+                color: white
+                text-decoration: none
+                font-size: 2rem
+                border-radius: 4px
+                padding: 8px 16px
+                text-align: center 
+                cursor: pointer
+            .auth-error
+                font-size: 1.6rem
+                color: red
+

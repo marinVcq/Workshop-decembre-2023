@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="homepage-container">
+
+        <header class="header-container">
+
+            <div class="header-image">
+                <img src="{% static 'dys_app/images/home_header.jpg' %}" alt="header">
+            </div>
+
+            <div class="header-description">
+                <h1 class="description-title">Bienvenue sur Dys App</h1>
+                <p>Notre application innovante a été spécialement conçue pour accompagner les enfants sujets à la dyslexie tout 
+                    au long de leur parcours éducatif. Nous comprenons que chaque enfant est unique, c'est pourquoi notre 
+                    approche repose sur une combinaison de méthodes d'enseignement personnalisées et de technologies de pointe.</p>
+                <a class="register-btn" href="{% url 'register' %}">Créer un compte</a>
+            </div>
+        </header>
+
+        <Section class="video-container">
+            <h2 class="video-title">Qu'est-ce-que la dysléxie ?</h2>
+
+            <div class="youtube-video-container">
+                <iframe class="youtube-video" src="https://www.youtube.com/embed/zafiGBrFkRM" allowfullscreen></iframe>
+            </div>
+        </Section>
+
+        <Section class="section-container" id="services">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="list-container">
+                <p class="list-element"><strong>Adaptabilité Intelligente</strong> : Notre application s'adapte dynamiquement aux besoins individuels de chaque enfant, créant ainsi une expérience d'apprentissage sur mesure.</p>
+                <p class="list-element"><strong>Jeux Ludiques et Éducatifs</strong> : Apprendre devient une aventure passionnante grâce à nos jeux interactifs conçus pour renforcer la compréhension et la mémoire.</p>
+                <p class="list-element"><strong>Suivi Personnalisé </strong>: Les parents et les enseignants peuvent suivre les progrès de l'enfant et adapter les activités en fonction de ses besoins évolutifs.</p>
+                <p class="list-element"><strong>Support Multimédia</strong> : Des ressources multimédias riches aident les enfants à visualiser et à entendre les concepts, renforçant ainsi leur compréhension.</p>
+            </div>
+        </Section>
+
+        {% if user.is_authenticated %}
+            <p>Hello, {{ user.username }}!</p>
+        {% else %}
+            <a href="{% url 'login' %}">Connexion</a>   
+        {% endif %} 
+    </div>
+{% endblock %}
