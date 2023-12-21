@@ -1,0 +1,49 @@
+.memory-game
+    width: 100%
+    height: 100%
+    min-height: 100vh
+    padding: 9rem 3%
+    gap: 2rem
+    display: flex
+    flex-direction: column
+    padding-bottom: 3rem
+
+    #word-form 
+        display: none
+        margin-top: 20rem
+
+.sortable-list
+    list-style-type: none
+    padding: 0
+    margin: 20px
+    display: flex
+
+.sortable-item
+    padding: 10px
+    margin: 5px
+    border: 1px solid #ddd
+    cursor: grab
+
+
+.container
+  display: flex
+  justify-content: space-between
+  margin: 2ch
+
+.dropzone
+  width: calc(50% - 1ch)
+  padding: 2ch
+  border: 1px solid gray
+
+.draggable
+  border: 1px solid lightgray
+  padding: 1.5ch
+  background-color: #efefef
+  cursor: move
+
+  + .draggable
+    margin-top: 1.5ch
+
+  &.is-dragging
+    opacity: 0.5
+

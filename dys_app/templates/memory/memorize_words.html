@@ -1,0 +1,108 @@
+<!-- memorize_words.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="memory-game">
+        <h2>Memorize the Words</h2>
+        <ol id="word-list" class="sortable">
+        {% for word in word_list %}
+            <li>{{ word }}</li>
+        {% endfor %}
+        </ol>
+
+        <div id="stopwatch">Time Remaining: <span id="timer">10</span> seconds</div>
+
+        <h2>Draggable Sorting</h2>
+
+        <div class="container">
+            <section class="dropzone source">
+                {% for word in word_list %}
+                    <div class="draggable" draggable="true">{{ word }}</div>
+                {% endfor %}
+            </section>
+            <section class="dropzone target">
+        
+            </section>
+        </div>
+
+        <form id="word-form" method="post" action="{% url 'submit_answers' %}">
+            {% csrf_token %}
+            <input type="hidden" name="user_answers" id="user_answers" required>
+            <button type="submit" id="submit-btn" disabled>Submit</button>
+        </form>
+    </div>
+  <script>
+    var timer = 10;
+    var countdown = setInterval(function() {
+      timer--;
+      document.getElementById("timer").textContent = timer;
+
+      if (timer <= 0) {
+        clearInterval(countdown);
+        document.getElementById("word-list").style.display = "none";
+        document.getElementById("word-form").style.display = "block";
+        document.getElementById("submit-btn").disabled = false;
+        document.getElementById("user_answers").value = getOrderedWords();
+      }
+    }, 1000);
+
+    function getOrderedWords() {
+      var orderedWords = Array.from(document.querySelectorAll("#word-list li")).map(function(item) {
+        return item.textContent;
+      });
+      return orderedWords.join(',');
+    }
+
+    const dropzoneSource = document.querySelector(".source");
+    const dropzone = document.querySelector(".target");
+    const dropzones = [...document.querySelectorAll(".dropzone")];
+    const draggables = [...document.querySelectorAll(".draggable")];
+
+    function getDragAfterElement(container, y) {
+    const draggableElements = [
+        ...container.querySelectorAll(".draggable:not(.is-dragging)")
+    ];
+
+    return draggableElements.reduce(
+        (closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+
+        if (offset < 0 && offset > closest.offset) {
+            return {
+            offset,
+            element: child
+            };
+        } else {
+            return closest;
+        }
+        },
+        { offset: Number.NEGATIVE_INFINITY }
+    ).element;
+    }
+
+    draggables.forEach((draggable) => {
+    draggable.addEventListener("dragstart", (e) => {
+        draggable.classList.add("is-dragging");
+    });
+
+    draggable.addEventListener("dragend", (e) => {
+        draggable.classList.remove("is-dragging");
+    });
+    });
+
+    dropzones.forEach((zone) => {
+    zone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        const afterElement = getDragAfterElement(zone, e.clientY);
+        const draggable = document.querySelector(".is-dragging");
+        if (afterElement === null) {
+        zone.appendChild(draggable);
+        } else {
+        zone.insertBefore(draggable, afterElement);
+        }
+    });
+    });
+  </script>
+{% endblock %}

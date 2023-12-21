@@ -1,0 +1,13 @@
+<!-- submit_answers.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Memory Game Results</h2>
+  {% if correct %}
+    <p>Congratulations! Your answers are correct.</p>
+  {% else %}
+    <p>Oops! Your answers are incorrect. Better luck next time.</p>
+  {% endif %}
+
+  <a href="{% url 'memory_rules' %}">Play Again</a>
+{% endblock %}

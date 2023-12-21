@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="{% static 'dys_app/styles.css' %}">
         <script src="{% static 'dys_app/script.js' %}" defer></script>
 
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
         <script>
             function toggleMobileNav() {
                 var linksContainer = document.getElementById("mobile-links-container");
@@ -26,7 +29,7 @@
 
             <div class="links-container" id="mobile-links-container">
                 <a class="nav-link" href="{% url 'home' %}">Accueil</a>
-                <a class="nav-link" href="#">Exercices</a>
+                <a class="nav-link" href="{% url 'exercises' %}">Exercices</a>
                 <a class="nav-link" href="{% url 'lessons' %}">Leçons</a>
                 <a class="nav-link" href="#">Contact</a>
                 {% if user.is_authenticated %}
@@ -38,7 +41,7 @@
             </div>
 
             <div class="navbar-header">
-                <p class="navbar-title">Dys Application</p>
+                <p class="navbar-title">LexiLearn</p>
                 <div class="menu-btn" onclick="toggleMobileNav()">
                     <img id="menu-icon" src="{% static 'dys_app/images/menu-open.png' %}" alt="Menu Icon">
                 </div>

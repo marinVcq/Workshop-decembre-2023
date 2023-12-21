@@ -244,6 +244,355 @@ html {
   color: red;
 }
 
+.lessons-page-container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding-top: 9rem;
+  gap: 5rem;
+  display: flex;
+  flex-direction: column;
+}
+.lessons-page-container .lessons-page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+.lessons-page-container .lessons-page-header .lessons-page-header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+.lessons-page-container .lessons-page-header .lessons-page-header-content .lessons-page-title {
+  font-size: 2.2rem;
+  text-align: center;
+  width: 100%;
+}
+.lessons-page-container .lessons-page-header .lessons-page-header-content .lessons-page-description {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  text-align: center;
+}
+.lessons-page-container .lessons-page-header .lessons-page-header-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lessons-page-container .lessons-page-header .lessons-page-header-image img {
+  width: 80%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.lessons-page-container .lessons-list-container {
+  width: 100%;
+  padding: 1rem 1rem 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2rem;
+}
+.lessons-page-container .lessons-list-container h2 {
+  font-size: 2.2rem;
+  width: 100%;
+  text-align: center;
+}
+.lessons-page-container .lessons-list-container .lesson-container {
+  width: 100%;
+  background-color: white;
+  box-shadow: 3px 11px 19px 0px rgba(0, 0, 0, 0.69);
+  padding: 1rem;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.lessons-page-container .lessons-list-container .lesson-container h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.lessons-page-container .lessons-list-container .lesson-container p {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+.lessons-page-container .lessons-list-container .lesson-container .read-button {
+  background-color: #FF2511;
+  border: none;
+  width: auto;
+  align-self: flex-end;
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  border-radius: 4px;
+  padding: 8px 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 1025px) {
+  .lessons-page-container .lessons-page-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10%;
+    background-color: white;
+  }
+  .lessons-page-container .lessons-page-header .lessons-page-header-content {
+    padding: 0;
+    width: 60%;
+  }
+  .lessons-page-container .lessons-page-header .lessons-page-header-content .lessons-page-title {
+    font-size: 2.8rem;
+    text-align: start;
+  }
+  .lessons-page-container .lessons-page-header .lessons-page-header-content .lessons-page-description {
+    font-size: 1.8rem;
+    line-height: 3rem;
+    text-align: start;
+  }
+  .lessons-page-container .lessons-page-header .lessons-page-header-image {
+    width: 40%;
+  }
+  .lessons-page-container .lessons-list-container {
+    padding: 0 10% 5% 10%;
+  }
+  .lessons-page-container .lessons-list-container h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+  }
+  .lessons-page-container .lessons-list-container .lesson-container {
+    align-self: center;
+    width: 80%;
+    padding: 2rem 3rem;
+  }
+  .lessons-page-container .lessons-list-container .lesson-container h3 {
+    font-size: 2rem;
+  }
+  .lessons-page-container .lessons-list-container .lesson-container p {
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+  }
+}
+.lesson-detail-page-container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding: 9rem 3%;
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3rem;
+}
+.lesson-detail-page-container h2 {
+  font-size: 2.2rem;
+  width: 100%;
+  text-align: center;
+}
+.lesson-detail-page-container p {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  text-align: center;
+}
+.lesson-detail-page-container .lesson-info {
+  background-color: rgb(180, 180, 233);
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.lesson-detail-page-container .lesson-info p {
+  font-size: 1.6rem;
+}
+.lesson-detail-page-container .lesson-complete-btn {
+  background-color: #FF2511;
+  border: none;
+  width: auto;
+  align-self: center;
+  color: white;
+  text-decoration: none;
+  font-size: 2.2rem;
+  border-radius: 4px;
+  padding: 8px 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 1025px) {
+  .lesson-detail-page-container {
+    padding: 10rem 20%;
+  }
+  .lesson-detail-page-container h2 {
+    font-size: 2.2rem;
+    text-align: start;
+  }
+  .lesson-detail-page-container p {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    text-align: start;
+  }
+  .lesson-detail-page-container .lesson-info {
+    background-color: rgb(180, 180, 233);
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .lesson-detail-page-container .lesson-info p {
+    font-size: 1.6rem;
+  }
+}
+.exercises-menu-page {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding-top: 9rem;
+  gap: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: rgb(218, 218, 244);
+}
+.exercises-menu-page h2 {
+  font-size: 2.4rem;
+}
+.exercises-menu-page .exercises-theme-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding: 2% 3%;
+}
+.exercises-menu-page .exercises-theme-container .exercice-theme {
+  box-shadow: 3px 11px 19px 0px rgba(0, 0, 0, 0.69);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2rem 3rem;
+  background-color: white;
+  border-radius: 6px;
+  gap: 2rem;
+}
+.exercises-menu-page .exercises-theme-container .exercice-theme h3 {
+  font-size: 2rem;
+}
+.exercises-menu-page .exercises-theme-container .exercice-theme p {
+  font-size: 1.6rem;
+}
+.exercises-menu-page .exercises-theme-container .exercice-theme .exercice-btn {
+  background-color: #FF2511;
+  border: none;
+  width: auto;
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  border-radius: 4px;
+  padding: 8px 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 1025px) {
+  .exercises-menu-page h2 {
+    font-size: 2.8rem;
+  }
+  .exercises-menu-page .exercises-theme-container {
+    flex-direction: row;
+  }
+  .exercises-menu-page .exercises-theme-container .exercice-theme {
+    box-shadow: 3px 11px 19px 0px rgba(0, 0, 0, 0.69);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2rem 3rem;
+    background-color: white;
+    border-radius: 6px;
+    gap: 2rem;
+  }
+  .exercises-menu-page .exercises-theme-container .exercice-theme h3 {
+    font-size: 2rem;
+  }
+  .exercises-menu-page .exercises-theme-container .exercice-theme p {
+    font-size: 1.6rem;
+  }
+  .exercises-menu-page .exercises-theme-container .exercice-theme .exercice-btn {
+    background-color: #FF2511;
+    border: none;
+    width: auto;
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+    border-radius: 4px;
+    padding: 8px 16px;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+.memory-game {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding: 9rem 3%;
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3rem;
+}
+.memory-game #word-form {
+  display: none;
+  margin-top: 20rem;
+}
+
+.sortable-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px;
+  display: flex;
+}
+
+.sortable-item {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ddd;
+  cursor: grab;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 2ch;
+}
+
+.dropzone {
+  width: calc(50% - 1ch);
+  padding: 2ch;
+  border: 1px solid gray;
+}
+
+.draggable {
+  border: 1px solid lightgray;
+  padding: 1.5ch;
+  background-color: #efefef;
+  cursor: move;
+}
+.draggable + .draggable {
+  margin-top: 1.5ch;
+}
+.draggable.is-dragging {
+  opacity: 0.5;
+}
+
 .navbar-container {
   width: 100%;
   height: auto;

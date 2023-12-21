@@ -1,0 +1,16 @@
+<!-- rules.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Memory Game Rules</h2>
+  <p>Welcome to the Memory Game!</p>
+  <p>You will be presented with a list of 10 words. Your task is to memorize the words in the given order.</p>
+  <p>After clicking "Start," you will have 10 seconds to memorize the words.</p>
+  <p>Once the memorization time is up, you'll be asked to enter the words in the correct order.</p>
+  <p>Good luck and have fun!</p>
+
+  <form method="post" action="{% url 'start_memory_game' %}">
+    {% csrf_token %}
+    <button type="submit">Start</button>
+  </form>
+{% endblock %}

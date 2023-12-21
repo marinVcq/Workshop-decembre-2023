@@ -1,0 +1,66 @@
+.lesson-detail-page-container
+    width: 100%
+    height: 100%
+    min-height: 100vh
+    padding: 9rem 3%
+    gap: 2rem
+    display: flex
+    flex-direction: column
+    padding-bottom: 3rem
+
+    h2
+        font-size: 2.2rem
+        width: 100%
+        text-align: center
+    p
+        font-size: 1.6rem
+        line-height: 2.4rem
+        text-align: center
+    
+    .lesson-info
+        background-color: rgb(180, 180, 233)
+        padding: 1rem 2rem
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        align-items: flex-start
+        gap: 0.5rem
+
+        p
+            font-size: 1.6rem
+    
+    .lesson-complete-btn
+        background-color: #FF2511
+        border: none
+        width: auto
+        align-self: center
+        color: white
+        text-decoration: none
+        font-size: 2.2rem
+        border-radius: 4px
+        padding: 8px 16px
+        text-align: center 
+        cursor: pointer
+
+@include respond(desktop)
+    .lesson-detail-page-container
+        padding: 10rem 20%
+        h2
+            font-size: 2.2rem
+            text-align: start
+        p
+            font-size: 1.6rem
+            line-height: 2.4rem
+            text-align: start
+        
+        .lesson-info
+            background-color: rgb(180, 180, 233)
+            padding: 1rem 2rem
+            display: flex
+            flex-direction: column
+            justify-content: flex-start
+            align-items: flex-start
+            gap: 0.5rem
+
+            p
+                font-size: 1.6rem

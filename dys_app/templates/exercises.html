@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="exercises-menu-page">
+        <h2>Menu des exercices</h2>
+        <div class="exercises-theme-container">
+            {% for theme in exercise_themes %}
+                <div class="exercice-theme">
+                    <h3>{{ theme.title }}</h3>
+                    <p>{{ theme.description }}</p>
+                    <button class="exercice-btn">Commencer</button>
+                </div>
+            {% endfor %}            
+        </div>
+    </div>
+
+{% endblock %}

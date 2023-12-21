@@ -1,20 +1,63 @@
+<!-- lessons.html -->
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-    <h2>Lessons</h2>
+    <div class="lessons-page-container">
 
-    {% if user.is_authenticated %}
-        {% for lesson in lessons %}
-            <div>
-                <h3>{{ lesson.title }}</h3>
-                <p>{{ lesson.description }}</p>
-                <p>Date: {{ lesson.date }}</p>
-                <p>Publisher: {{ lesson.publisher }}</p>
-                <p>YouTube Link: <a href="{{ lesson.youtube_link }}" target="_blank">{{ lesson.youtube_link }}</a></p>
-                <p>School Level: {{ lesson.school_level }}</p>
+        <div class="lessons-page-header">
+
+            <div class="lessons-page-header-content">
+                <h2 class="lessons-page-title">Leçons</h2>
+                <p class="lessons-page-description">
+                    Nous sommes ravis de t'accueillir dans cet espace dédié à ton parcours d'apprentissage unique. Les leçons que tu trouveras ici
+                    ont été spécialement conçues pour t'accompagner dans ton voyage vers la maîtrise de la lecture et de l'écriture.
+                    Chaque leçon est une étape importante vers le développement de tes compétences. 
+                    Nous comprenons que chaque enfant dyslexique a son propre rythme, c'est pourquoi nous avons créé un environnement 
+                    ludique et interactif pour rendre l'apprentissage aussi amusant que possible.
+                </p>                
             </div>
-        {% endfor %}
-    {% else %}
-        <p>You have to be logged in to view lessons. <a href="{% url 'login' %}">Login</a></p>
-    {% endif %}
+
+            <div class="lessons-page-header-image">
+                <img src="{% static 'dys_app/images/lessons_header.jpg' %}" alt="header"/>
+            </div>
+
+        </div>
+
+        <div class="lessons-list-container">
+            <h2>Liste des leçons</h2>
+            {% if user.is_authenticated %}
+                {% for lesson in lessons %}
+                    <div class="lesson-container">
+                        <h3>{{ lesson.title }}</h3>
+                        <p>{{ lesson.description }}</p>
+
+                        {% if lesson.user_completed_lesson %}
+                            <p>You have completed this lesson at {{ lesson.user_completed_lesson.completed_at }}</p>
+                        {% else %}
+                            <p>Not completed yet</p>
+                        {% endif %}
+
+                        <button class="read-button" data-lesson-id="{{ lesson.id }}">Voir la leçon</button>
+
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>You have to be logged in to view lessons. <a href="{% url 'login' %}">Login</a></p>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const readButtons = document.querySelectorAll('.read-button');
+            readButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lessonId = this.getAttribute('data-lesson-id');
+                    window.location.href = `/lesson/${lessonId}/`;  // Redirect to the lesson detail page
+                });
+            });
+        });
+    </script>
 {% endblock %}

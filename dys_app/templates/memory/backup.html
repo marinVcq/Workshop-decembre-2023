@@ -1,0 +1,106 @@
+<!-- memorize_words.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="memory-game">
+        <h2>Memorize the Words</h2>
+        <ol id="word-list" class="sortable">
+        {% for word in word_list %}
+            <li>{{ word }}</li>
+        {% endfor %}
+        </ol>
+
+        <div id="stopwatch">Time Remaining: <span id="timer">10</span> seconds</div>
+
+        <h2>Draggable Sorting</h2>
+
+        <ul id="sortable-list" class="sortable-list">
+        <li class="sortable-item" draggable="true">Apple</li>
+        <li class="sortable-item" draggable="true">Banana</li>
+        <li class="sortable-item" draggable="true">Cherry</li>
+        <li class="sortable-item" draggable="true">Date</li>
+        <li class="sortable-item" draggable="true">Grapes</li>
+        </ul>
+
+        <form id="word-form" method="post" action="{% url 'submit_answers' %}">
+        {% csrf_token %}
+        <input type="hidden" name="user_answers" id="user_answers" required>
+        <button type="submit" id="submit-btn" disabled>Submit</button>
+        </form>
+    </div>
+
+  <script>
+    var timer = 10;
+    var countdown = setInterval(function() {
+      timer--;
+      document.getElementById("timer").textContent = timer;
+
+      if (timer <= 0) {
+        clearInterval(countdown);
+        document.getElementById("word-list").style.display = "none";
+        document.getElementById("word-form").style.display = "block";
+        document.getElementById("submit-btn").disabled = false;
+        document.getElementById("user_answers").value = getOrderedWords();
+      }
+    }, 1000);
+
+    function getOrderedWords() {
+      var orderedWords = Array.from(document.querySelectorAll("#word-list li")).map(function(item) {
+        return item.textContent;
+      });
+      return orderedWords.join(',');
+    }
+
+    const sortableList = document.getElementById('sortable-list');
+
+    let dragStartIndex;
+
+    sortableList.addEventListener('dragstart', (e) => {
+    dragStartIndex = Array.from(sortableList.children).indexOf(e.target);
+    e.dataTransfer.setData('text/plain', dragStartIndex);
+    });
+
+    sortableList.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    const dragOverIndex = getIndexUnderMouse(e.clientY);
+    const draggable = document.querySelector('.dragging');
+    const items = Array.from(sortableList.children);
+
+    if (dragOverIndex === null || dragOverIndex === dragStartIndex) {
+        return;
+    }
+
+    sortableList.insertBefore(draggable, items[dragOverIndex]);
+
+    // Update the list
+    const newItems = Array.from(sortableList.children);
+    console.log('New Order:', newItems.map(item => item.innerText));
+    });
+
+    function getIndexUnderMouse(y) {
+    const items = Array.from(sortableList.children);
+    return items.findIndex(item => {
+        const rect = item.getBoundingClientRect();
+        return y >= rect.top && y <= rect.bottom;
+    });
+    }
+
+    sortableList.addEventListener('dragend', () => {
+    const items = Array.from(sortableList.children);
+    items.forEach(item => item.classList.remove('dragging'));
+    });
+
+    sortableList.addEventListener('dragenter', (e) => {
+    if (e.target.classList.contains('sortable-item')) {
+        e.target.classList.add('dragging');
+    }
+    });
+
+    sortableList.addEventListener('dragleave', (e) => {
+    if (e.target.classList.contains('sortable-item')) {
+        e.target.classList.remove('dragging');
+    }
+    });
+  </script>
+{% endblock %}
