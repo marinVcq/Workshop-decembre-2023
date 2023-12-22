@@ -11,8 +11,11 @@ from .models import Lesson, CompletedLesson, ExerciseTheme
 import random
 import time
 
+def dashboard(request):
+    return render(request, 'dashboard.html')
+
 def memory_rules(request):
-    return render(request, 'memory_rules.html')
+    return render(request, 'memory/rules.html')
 
 def start_memory_game(request):
     # Generate a list of 10 random words
@@ -25,14 +28,16 @@ def start_memory_game(request):
     return redirect('memorize_words')
 
 def memorize_words(request):
-    # Get the word list from the session
-    word_list = request.session.get('word_list', [])
-    
-    if not word_list:
-        # Redirect to the start page if no word list found
-        return redirect('start_memory_game')
-    
-    return render(request, 'memory/memorize_words.html', {'word_list': word_list})
+    # Assuming original_word_list is a list of words
+    original_word_list = ["Pomme", "Banane", "Cerise", "Date", "Fraise"]
+
+    # Make a copy of the original list and shuffle it
+    shuffled_word_list = original_word_list.copy()
+    random.shuffle(shuffled_word_list)
+
+    # Pass both lists to the template
+    context = {'original_word_list': original_word_list, 'shuffled_word_list': shuffled_word_list}
+    return render(request, 'memory/memorize_words.html', context)
 
 def submit_answers(request):
     # Get the word list from the session

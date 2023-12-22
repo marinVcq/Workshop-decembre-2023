@@ -76,9 +76,10 @@ html {
   align-self: flex-end;
   color: white;
   text-decoration: none;
-  font-size: 2rem;
-  border-radius: 4px;
-  padding: 8px 16px;
+  font-size: 3rem;
+  font-family: "Poppins";
+  border-radius: 6px;
+  padding: 10px 20px;
   text-align: center;
   cursor: pointer;
 }
@@ -138,11 +139,13 @@ html {
   }
   .homepage-container .header-container {
     flex-direction: row;
+    justify-content: center;
   }
   .homepage-container .header-container .header-image {
-    width: 50%;
+    width: 40%;
   }
   .homepage-container .header-container .header-description {
+    max-width: 800px;
     width: 50%;
     padding: 5rem 5rem 0 5rem;
     gap: 3rem;
@@ -153,6 +156,9 @@ html {
   .homepage-container .header-container .header-description p {
     font-size: 1.8rem;
     line-height: 30px;
+  }
+  .homepage-container .header-container .header-description .register-btn {
+    margin-top: 5rem;
   }
   .homepage-container .section-container .section-title {
     font-size: 2.8rem;
@@ -181,22 +187,25 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("./images/tech.jpg");
-  background-size: cover;
+  background-color: white;
+  background-image: url("./images/auth_bg.png");
+  background-size: 1300px;
+  background-position: center center;
   background-position: fixed;
+  background-repeat: no-repeat;
   padding: 2rem;
 }
 .form-page-container .form-container {
-  box-shadow: 3px 11px 19px 0px rgba(0, 0, 0, 0.69);
-  background-color: white;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   border-radius: 6px;
   padding: 2rem;
   max-width: 375px;
+  margin-bottom: 7rem;
 }
 .form-page-container .form-container form {
   width: 100%;
@@ -335,6 +344,9 @@ html {
 }
 
 @media only screen and (min-width: 1025px) {
+  .lessons-page-container {
+    align-items: center;
+  }
   .lessons-page-container .lessons-page-header {
     flex-direction: row;
     align-items: center;
@@ -344,7 +356,7 @@ html {
   }
   .lessons-page-container .lessons-page-header .lessons-page-header-content {
     padding: 0;
-    width: 60%;
+    width: 40%;
   }
   .lessons-page-container .lessons-page-header .lessons-page-header-content .lessons-page-title {
     font-size: 2.8rem;
@@ -356,7 +368,7 @@ html {
     text-align: start;
   }
   .lessons-page-container .lessons-page-header .lessons-page-header-image {
-    width: 40%;
+    width: 60%;
   }
   .lessons-page-container .lessons-list-container {
     padding: 0 10% 5% 10%;
@@ -539,58 +551,206 @@ html {
     cursor: pointer;
   }
 }
+.rules-page {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding: 9rem 20%;
+  gap: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 3rem;
+  background-image: url("./images/game_bg.jpg");
+  background-size: cover;
+  background-position: fixed;
+}
+.rules-page h2 {
+  font-size: 5rem;
+  width: 100%;
+  text-align: center;
+  font-family: "Poppins";
+  font-weight: normal;
+}
+.rules-page p {
+  font-size: 2.4rem;
+  width: 100%;
+  text-align: center;
+  font-family: "Poppins";
+  font-weight: normal;
+}
+.rules-page .start-btn {
+  background-color: #31bf0a;
+  border: none;
+  width: auto;
+  align-self: center;
+  color: white;
+  text-decoration: none;
+  font-size: 3rem;
+  border-radius: 4px;
+  padding: 8px 16px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 3px 11px 19px 0px rgba(0, 0, 0, 0.4);
+}
+
 .memory-game {
   width: 100%;
   height: 100%;
   min-height: 100vh;
-  padding: 9rem 3%;
-  gap: 2rem;
+  padding: 9rem 20%;
+  gap: 4rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding-bottom: 3rem;
+  background-image: url("./images/game_bg.jpg");
+  background-size: cover;
+  background-position: fixed;
 }
-.memory-game #word-form {
+.memory-game h2 {
+  font-size: 5rem;
+  width: 100%;
+  text-align: center;
+  font-family: "Poppins";
+  font-weight: normal;
+}
+.memory-game #word-list {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 3px 11px 19px 0px rgba(0, 0, 0, 0.4);
+  padding: 2rem 0 2rem 0;
+}
+.memory-game #word-list li {
+  margin: 2rem 0 0 8rem;
+  font-size: 4rem;
+  font-family: "Poppins";
+  font-weight: normal;
+}
+.memory-game #stopwatch {
+  margin-top: 3rem;
+  font-size: 3.5rem;
+  width: 100%;
+  text-align: center;
+}
+.memory-game #stopwatch #timer {
+  font-size: 5rem;
+  width: 100%;
+  text-align: center;
+  transition: 0.3s all linear;
+}
+.memory-game .container {
   display: none;
-  margin-top: 20rem;
-}
-
-.sortable-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 20px;
-  display: flex;
-}
-
-.sortable-item {
-  padding: 10px;
-  margin: 5px;
-  border: 1px solid #ddd;
-  cursor: grab;
-}
-
-.container {
-  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   justify-content: space-between;
   margin: 2ch;
 }
-
-.dropzone {
-  width: calc(50% - 1ch);
-  padding: 2ch;
-  border: 1px solid gray;
+.memory-game .container .drop-container {
+  display: flex;
+  gap: 2rem;
 }
-
-.draggable {
-  border: 1px solid lightgray;
-  padding: 1.5ch;
-  background-color: #efefef;
+.memory-game .container .drop-container .dropzone {
+  width: 50%;
+  padding: 3.5rem;
+  border: 0.2rem solid #333;
+  border-radius: 6px;
+}
+.memory-game .container .drop-container .draggable {
+  padding: 2rem;
+  font-size: 2rem;
+  font-family: "Poppins";
+  font-weight: normal;
+  background-color: white;
   cursor: move;
+  border-radius: 6px;
+  box-shadow: 3px 11px 19px 0px rgba(0, 0, 0, 0.4);
 }
-.draggable + .draggable {
-  margin-top: 1.5ch;
+.memory-game .container .drop-container .draggable + .draggable {
+  margin-top: 1.5rem;
 }
-.draggable.is-dragging {
+.memory-game .container .drop-container .draggable.is-dragging {
   opacity: 0.5;
+}
+.memory-game .check-btn {
+  display: none;
+  background-color: #31bf0a;
+  border: none;
+  width: auto;
+  align-self: center;
+  color: white;
+  text-decoration: none;
+  font-size: 3rem;
+  border-radius: 4px;
+  padding: 8px 16px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 3px 11px 19px 0px rgba(0, 0, 0, 0.4);
+}
+
+#result-modal-container {
+  position: relative;
+  box-shadow: 3px 11px 19px 0px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40%;
+  height: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 2rem;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4rem;
+}
+#result-modal-container p {
+  font-size: 2.4rem;
+  width: 100%;
+  text-align: center;
+}
+#result-modal-container .modal-options {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  align-items: center;
+}
+#result-modal-container .modal-options .modal-btn {
+  background-color: #31bf0a;
+  border: none;
+  width: auto;
+  align-self: center;
+  color: white;
+  text-decoration: none;
+  font-size: 3rem;
+  border-radius: 4px;
+  padding: 8px 16px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 3px 11px 19px 0px rgba(0, 0, 0, 0.4);
+}
+
+#close-result-modal-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4.8rem;
+  height: 4.8rem;
+  cursor: pointer;
+}
+#close-result-modal-container img {
+  cursor: pointer;
+}
+
+#result-bg-layer {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: rgba(33, 33, 33, 0.6);
+  display: none;
+  transition: 0.3s all linear;
 }
 
 .navbar-container {
@@ -618,7 +778,7 @@ html {
   width: 100%;
   height: 7rem;
   padding: 0 1.5rem;
-  background-color: #003060;
+  background-color: rgb(105, 121, 53);
   border-bottom: 0.2rem solid rgba(240, 240, 240, 0.4);
   position: relative;
   z-index: 2;
@@ -652,7 +812,7 @@ html {
   justify-content: flex-start;
   gap: 1.5rem;
   transition: 0.2s all linear;
-  background-color: #003060;
+  background-color: rgb(105, 121, 53);
   padding-bottom: 2rem;
 }
 .navbar-container .links-container .nav-link {
@@ -686,7 +846,7 @@ html {
     justify-content: space-between;
     align-items: center;
     gap: 0;
-    background-color: #003060;
+    background-color: rgb(105, 121, 53);
     width: 100%;
     height: 7rem;
     padding: 0 2rem;

@@ -8,7 +8,7 @@
                 <div class="exercice-theme">
                     <h3>{{ theme.title }}</h3>
                     <p>{{ theme.description }}</p>
-                    <button class="exercice-btn">Commencer</button>
+                    <a href="{% url theme.view %}" class="exercice-btn">Commencer</a>
                 </div>
             {% endfor %}            
         </div>

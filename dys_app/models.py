@@ -10,6 +10,8 @@ class MemoryGame(models.Model):
 class ExerciseTheme(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
+    view = models.CharField(max_length=255, default='memory_rules')
+
 
     def __str__(self):
         return self.title

@@ -4,36 +4,99 @@
 
 {% block content %}
     <div class="memory-game">
-        <h2>Memorize the Words</h2>
+        <h2 id="memory-game-page-title">Retiens l'ordre des mots!</h2>
         <ol id="word-list" class="sortable">
-        {% for word in word_list %}
+        {% for word in original_word_list %}
             <li>{{ word }}</li>
         {% endfor %}
         </ol>
 
-        <div id="stopwatch">Time Remaining: <span id="timer">10</span> seconds</div>
+        <div id="stopwatch">Temps Restant: <span id="timer">10</span> Secondes </div>
 
-        <h2>Draggable Sorting</h2>
 
-        <div class="container">
-            <section class="dropzone source">
-                {% for word in word_list %}
-                    <div class="draggable" draggable="true">{{ word }}</div>
-                {% endfor %}
-            </section>
-            <section class="dropzone target">
-        
-            </section>
+        <div class="container" id="drag-container">
+            <h2>Retrouvre l'Ordre des mots</h2>
+
+            <div class="drop-container">
+                <section class="dropzone source">
+                    {% for word in shuffled_word_list %}
+                        <div class="draggable" draggable="true">{{ word }}</div>
+                    {% endfor %}
+                </section>
+                <section class="dropzone target">
+            
+                </section>                
+            </div>
+
         </div>
 
-        <form id="word-form" method="post" action="{% url 'submit_answers' %}">
-            {% csrf_token %}
-            <input type="hidden" name="user_answers" id="user_answers" required>
-            <button type="submit" id="submit-btn" disabled>Submit</button>
-        </form>
+        <button class="check-btn" id="memory-game-check-btn" onclick="checkOrder()">J'ai terminé!</button>
+
     </div>
+
+    <div id="result-bg-layer"></div>
+
+    <div id="result-modal-container">
+        <a id="close-result-modal-container"  class="modal-btn" href="{% url 'memory_rules' %}"><img src="{% static 'dys_app/images/close-modal.png' %}" alt="header"/></a>
+        
+        <p id="result"></p>
+        <div class="modal-options">
+            <a class="modal-btn" href="{% url 'start_memory_game' %}">Reessayer</a>
+            <a class="modal-btn" href="{% url 'exercises' %}">Changer d'exercice</a>            
+        </div>
+    </div>
+
   <script>
     var timer = 10;
+
+    function checkOrder() {
+        clearInterval(countdown); // Stop the countdown timer
+
+        // Get the ordered words from the original word list
+        var orderedWords = getOrderedWords();
+
+        // Get the user's ordered words from the drop container
+        var userOrderedWords = Array.from(dropzone.children).map(function(item) {
+            return item.textContent;
+        });
+
+        // Check if the user's order is equal to the correct order
+        if (arraysEqual(orderedWords.split(','), userOrderedWords)) {
+            showResultMessage("Bravo! Vous avez récupéré le bon ordre.", "success");
+
+        } else {
+            showResultMessage("Désolé, l'ordre est incorrect. Essayez à nouveau.", "failure");
+        }
+
+        document.getElementById("result-bg-layer").style.display = "block";
+        document.getElementById("result-modal-container").style.display = "flex";
+
+    }
+
+    function showResultMessage(message, type) {
+        var resultElement = document.getElementById("result");
+        resultElement.textContent = message;
+
+        // Add styles based on the result type
+        if (type === "success") {
+            resultElement.style.color = "green";
+        } else if (type === "failure") {
+            resultElement.style.color = "red";
+        }
+
+        // Show the result element
+        resultElement.style.display = "block";
+        resultElement.style.fontSize = "2.4rem";
+    }
+
+    function arraysEqual(arr1, arr2) {
+        if (arr1.length !== arr2.length) return false;
+        for (var i = 0; i < arr1.length; i++) {
+            if (arr1[i] !== arr2[i]) return false;
+        }
+        return true;
+    }
+
     var countdown = setInterval(function() {
       timer--;
       document.getElementById("timer").textContent = timer;
@@ -41,9 +104,17 @@
       if (timer <= 0) {
         clearInterval(countdown);
         document.getElementById("word-list").style.display = "none";
-        document.getElementById("word-form").style.display = "block";
-        document.getElementById("submit-btn").disabled = false;
-        document.getElementById("user_answers").value = getOrderedWords();
+        document.getElementById("drag-container").style.display = "flex";
+        document.getElementById("stopwatch").style.display = "none";
+        document.getElementById("memory-game-page-title").style.display = "none";
+        document.getElementById("memory-game-check-btn").style.display = "block";
+
+    }else{
+        document.getElementById("drag-container").style.display = "none";
+        document.getElementById("stopwatch").style.display = "block"
+        document.getElementById("memory-game-page-title").style.display = "block";
+        document.getElementById("memory-game-check-btn").style.display = "none";
+
       }
     }, 1000);
 

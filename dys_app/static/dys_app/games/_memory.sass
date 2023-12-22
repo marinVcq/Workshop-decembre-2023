@@ -1,49 +1,210 @@
-.memory-game
-    width: 100%
-    height: 100%
-    min-height: 100vh
-    padding: 9rem 3%
-    gap: 2rem
-    display: flex
-    flex-direction: column
-    padding-bottom: 3rem
-
-    #word-form 
-        display: none
-        margin-top: 20rem
-
-.sortable-list
-    list-style-type: none
-    padding: 0
-    margin: 20px
-    display: flex
-
-.sortable-item
-    padding: 10px
-    margin: 5px
-    border: 1px solid #ddd
-    cursor: grab
-
-
-.container
+.rules-page
+  width: 100%
+  height: 100%
+  min-height: 100vh
+  padding: 9rem 20%
+  gap: 4rem
   display: flex
-  justify-content: space-between
-  margin: 2ch
+  flex-direction: column
+  justify-content: center
+  padding-bottom: 3rem
+  background-image: url("./images/game_bg.jpg")
+  background-size: cover
+  background-position: fixed
 
-.dropzone
-  width: calc(50% - 1ch)
-  padding: 2ch
-  border: 1px solid gray
 
-.draggable
-  border: 1px solid lightgray
-  padding: 1.5ch
-  background-color: #efefef
-  cursor: move
+  h2
+    font-size: 5rem
+    width: 100%
+    text-align: center
+    font-family: "Poppins"
+    font-weight: normal
+  p
+    font-size: 2.4rem
+    width: 100%
+    text-align: center
+    font-family: "Poppins"
+    font-weight: normal
 
-  + .draggable
-    margin-top: 1.5ch
+  .start-btn
+    background-color: #31bf0a
+    border: none
+    width: auto
+    align-self: center
+    color: white
+    text-decoration: none
+    font-size: 3rem
+    border-radius: 4px
+    padding: 8px 16px
+    text-align: center 
+    cursor: pointer
+    box-shadow: 3px 11px 19px 0px rgba(0,0,0,0.4)
 
-  &.is-dragging
-    opacity: 0.5
+
+// END RULES PAGE
+
+.memory-game
+  width: 100%
+  height: 100%
+  min-height: 100vh
+  padding: 9rem 20%
+  gap: 4rem
+  display: flex
+  flex-direction: column
+  justify-content: center
+  padding-bottom: 3rem
+  background-image: url("./images/game_bg.jpg")
+  background-size: cover
+  background-position: fixed
+
+  h2
+    font-size: 5rem
+    width: 100%
+    text-align: center
+    font-family: "Poppins"
+    font-weight: normal
+
+  #word-list
+    background-color: white
+    border-radius: 6px
+    box-shadow: 3px 11px 19px 0px rgba(0,0,0,0.4)
+    padding: 2rem 0 2rem 0
+
+
+    li
+      margin: 2rem 0 0 8rem
+      font-size: 4rem
+      font-family: "Poppins"
+      font-weight: normal
+
+  #stopwatch
+    margin-top: 3rem
+    font-size: 3.5rem
+    width: 100%
+    text-align: center
+  
+    #timer
+      font-size: 5rem
+      width: 100%
+      text-align: center
+      transition: 0.3s all linear
+
+
+  .container
+    display: none
+    flex-direction: column
+    gap: 2rem
+    justify-content: space-between
+    margin: 2ch
+
+    .drop-container
+      display: flex
+      gap: 2rem
+
+      .dropzone
+        width: 50%
+        padding: 3.5rem
+        border: 0.2rem solid #333
+        border-radius: 6px
+
+
+      .draggable
+        padding: 2rem
+        font-size: 2rem
+        font-family: "Poppins"
+        font-weight: normal
+        background-color: white
+        cursor: move
+        border-radius: 6px
+        box-shadow: 3px 11px 19px 0px rgba(0,0,0,0.4)
+
+        + .draggable
+          margin-top: 1.5rem
+
+        &.is-dragging
+          opacity: 0.5
+
+  .check-btn
+    display: none
+    background-color: #31bf0a
+    border: none
+    width: auto
+    align-self: center
+    color: white
+    text-decoration: none
+    font-size: 3rem
+    border-radius: 4px
+    padding: 8px 16px
+    text-align: center 
+    cursor: pointer
+    box-shadow: 3px 11px 19px 0px rgba(0,0,0,0.4)
+
+#result-modal-container
+  position: relative
+  box-shadow: 3px 11px 19px 0px rgba(0,0,0,0.4)
+  position: absolute
+  top: 50%
+  left: 50%
+  width: 40%
+  height: 50%
+  transform: translate(-50%,-50%)
+  background-color: white
+  padding: 2rem
+
+  display: none
+  flex-direction: column
+  justify-content: center
+  gap: 4rem
+
+  p
+    font-size: 2.4rem
+    width: 100%
+    text-align: center
+
+  .modal-options
+    display: flex
+    gap: 4rem
+    justify-content: center
+    align-items: center
+
+    .modal-btn
+      background-color: #31bf0a
+      border: none
+      width: auto
+      align-self: center
+      color: white
+      text-decoration: none
+      font-size: 3rem
+      border-radius: 4px
+      padding: 8px 16px
+      text-align: center 
+      cursor: pointer
+      box-shadow: 3px 11px 19px 0px rgba(0,0,0,0.4)
+
+#close-result-modal-container
+  position: absolute
+  top: 0
+  right: 0
+  width: 4.8rem
+  height: 4.8rem
+  cursor: pointer
+  img
+    cursor: pointer
+
+#result-bg-layer
+  width: 100%
+  position: fixed
+  top: 0
+  left: 0
+  height: 100%
+  background-color: rgba(33,33,33,0.6)
+  display: none
+  transition: 0.3s all linear
+
+
+
+
+
+
+
 

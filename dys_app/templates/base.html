@@ -29,11 +29,10 @@
 
             <div class="links-container" id="mobile-links-container">
                 <a class="nav-link" href="{% url 'home' %}">Accueil</a>
-                <a class="nav-link" href="{% url 'exercises' %}">Exercices</a>
+                <a class="nav-link" href="{% url 'exercises' %}">Jeux</a>
                 <a class="nav-link" href="{% url 'lessons' %}">Leçons</a>
-                <a class="nav-link" href="#">Contact</a>
                 {% if user.is_authenticated %}
-                    <a class="nav-link" href="#">Dashboard</a>
+                    <a class="nav-link" href="{% url 'dashboard' %}">Progression</a>
                     <a class="nav-link log-btn" href="{% url 'logout' %}">Déconnexion</a></li>
                 {% else %}
                     <a class="nav-link log-btn" href="{% url 'login' %}">Connexion</a>
